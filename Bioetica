@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casos Éticos Interactivos</title>
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #eef2f5; padding-top: 40px; }
+    .case-card { background: #fff; border-radius: 10px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .btn-option { margin-top: 10px; }
+    .feedback { margin-top: 20px; padding: 15px; border-radius: 5px; display: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mb-4">Casos Éticos Interactivos</h1>
+  <div class="case-card">
+    <h5 id="caseTitle">Caso: Paciente terminal y tratamiento agresivo</h5>
+    <p id="caseDescription">
+      Un paciente de 85 años, diagnosticado con una enfermedad terminal, rechaza continuar con un tratamiento agresivo que le causa dolor. Su familia insiste en que se mantenga el tratamiento a toda costa.
+    </p>
+    <div class="btn-group-vertical w-100">
+      <button class="btn btn-outline-primary btn-option" onclick="elegirOpcion(1)">Respetar la decisión del paciente</button>
+      <button class="btn btn-outline-primary btn-option" onclick="elegirOpcion(2)">Seguir el deseo de la familia</button>
+      <button class="btn btn-outline-primary btn-option" onclick="elegirOpcion(3)">Solicitar opinión del comité de bioética</button>
+    </div>
+    <div id="feedback" class="feedback mt-3"></div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function elegirOpcion(opcion) {
+    const feedbackBox = document.getElementById('feedback');
+    feedbackBox.style.display = 'block';
+
+    switch (opcion) {
+      case 1:
+        feedbackBox.className = 'feedback alert alert-success';
+        feedbackBox.innerHTML = `<strong>Autonomía:</strong> Esta decisión respeta el principio de autonomía del paciente, quien tiene derecho a rechazar tratamientos, incluso si ello afecta su expectativa de vida.`;
+        break;
+      case 2:
+        feedbackBox.className = 'feedback alert alert-warning';
+        feedbackBox.innerHTML = `<strong>Conflicto:</strong> Aunque muestra sensibilidad hacia la familia, no respeta la autonomía del paciente. Es importante mediar sin invalidar su voluntad.`;
+        break;
+      case 3:
+        feedbackBox.className = 'feedback alert alert-info';
+        feedbackBox.innerHTML = `<strong>Acción intermedia:</strong> Consultar al comité de bioética puede ayudar a clarificar la situación y evitar vulnerar los derechos del paciente.`;
+        break;
+    }
+  }
+</script>
+</body>
+</html>
